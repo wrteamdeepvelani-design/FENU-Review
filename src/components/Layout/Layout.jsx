@@ -309,7 +309,7 @@ const Layout = ({ children }) => {
   }
 
   // Show loader only during initial load
-  if (true) {
+  if (isInitialLoad) {
     return <Loader />;
   }
 
