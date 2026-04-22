@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Allow SSL certificate verification (Let's Encrypt)
+    # This must serve from filesystem for Certbot webroot mode
+    RewriteRule ^\.well-known/acme-challenge/ - [L]
+    
+    # Proxy EVERYTHING else to the Node.js server
+    # We let Next.js handle static assets, public files, and pages.
+    # The $1 is critical to pass the request path.
+    RewriteRule ^(.*)$ http://127.0.0.1:8001/$1 [P,L]
+</IfModule>
+
+# Security headers (optional but recommended)
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
