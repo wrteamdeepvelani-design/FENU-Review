@@ -541,14 +541,14 @@ const Header = () => {
               <CustomImageTag
                 src={websettings?.web_logo}
                 alt={t("logo")}
-                className="h-[40px] md:h-[60px] aspect-logo max-w-[220px] safari-logo"
+                className="h-[40px] md:h-[40px] xl:h-[50px] aspect-logo max-w-[220px] safari-logo"
               />
             </CustomLink>
 
 
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex gap-6 text_color">
+            <nav className="hidden lg:flex gap-4 xl:gap-6 text_color">
               {navigationItems.map((item) => (
                 <NavLink
                   key={item.key}
@@ -560,11 +560,11 @@ const Header = () => {
               ))}
             </nav>
 
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-2 xl:gap-4">
               {/* Location Display/Action - Only on non-landing pages */}
               {!((pathName === "/" || pathName === "/home")) && (
                 <div
-                  className="hidden md:flex items-center gap-2 cursor-pointer bg-gray-100 dark:bg-gray-800 p-2 rounded-md max-w-[200px]"
+                  className="hidden md:flex items-center gap-2 cursor-pointer bg-gray-100 dark:bg-gray-800 p-2 rounded-md max-w-[100px] xl:max-w-[200px]"
                   onClick={() => setIsLocationModalOpen(true)}
                 >
                   <IoLocationSharp size={20} className="primary_text_color min-w-[20px]" />

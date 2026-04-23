@@ -57,7 +57,7 @@ const Loader = () => {
           width: 0%;
           border-radius: 999px;
           background: var(--primary-color);
-          animation: loaderFill 1.3s ease-in-out infinite;
+          animation: loaderFill 1s ease-in-out infinite;
         }
 
         @keyframes loaderFill {

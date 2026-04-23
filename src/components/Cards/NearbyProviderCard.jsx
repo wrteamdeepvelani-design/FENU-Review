@@ -38,7 +38,7 @@ const NearbyProviderCard = ({ provider, isBookmark, handleRemoveBookMark }) => {
             {provider?.total_services > 0 && (
               <>
                 <span className="primary_text_color group-hover:underline">
-                  {provider?.total_services.toString().padStart(2, "0")}{" "}
+                  {provider?.total_services.toString().padStart(2)}{" "}
                   {provider?.total_services > 1 ? t("services") : t("service")}
                 </span>
               </>
