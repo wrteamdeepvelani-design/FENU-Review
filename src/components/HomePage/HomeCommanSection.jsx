@@ -21,10 +21,9 @@ const HomeCommanSection = ({ data }) => {
   const dispatch = useDispatch();
 
   const isRTL = useRTL();
-
   // Access selected category from Redux store
   const selectedCategories = useSelector(
-    (state) => state.multiCategories.selectedCategories
+    (state) => state.multiCategories.selectedCategories,
   );
 
   const handleRouteCategory = (category) => {
@@ -34,7 +33,7 @@ const HomeCommanSection = ({ data }) => {
     });
 
     const isCategorySelected = selectedCategories.some(
-      (cat) => cat.slug === category.slug
+      (cat) => cat.slug === category.slug,
     );
 
     if (!isCategorySelected) {
@@ -63,30 +62,18 @@ const HomeCommanSection = ({ data }) => {
 
   return (
     <div className="relative py-8">
-      
-      
-      <img
-        src={SectionBg?.src || SectionBg}
-        alt=""
-        className="absolute 
-                   top-4 right-4 
-                   w-[200px] 
-                   md:w-[280px]  
-                   xl:w-[350px]
-                   pointer-events-none 
-                   select-none"
-      />
 
       <div className="container mx-auto px-4 md:px-8 homeCommanSection relative z-10">
         <CommanHeadline
           headline={translatedTitle}
           subHeadline={translatedDescription}
           link={""}
+          image={data?.image}
         />
 
         <div>
           <Swiper
-            modules={[Autoplay, FreeMode,Pagination]} // Include FreeMode module
+            modules={[Autoplay, FreeMode, Pagination]} // Include FreeMode module
             spaceBetween={30}
             loop={true}
             key={isRTL}
