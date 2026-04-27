@@ -5,6 +5,7 @@ import { FaArrowRightLong } from "react-icons/fa6";
 import CustomImageTag from "../ReUseableComponents/CustomImageTag";
 import { useTranslation } from "../Layout/TranslationContext";
 import { usePathname } from "next/navigation";
+import { IoArrowForwardCircleOutline } from "react-icons/io5";
 
 const HomeCategoryCard = ({ data, handleRouteCategory }) => {
   const pathName = usePathname();
@@ -55,7 +56,7 @@ const HomeCategoryCard = ({ data, handleRouteCategory }) => {
           <button className="text-sm md:text-base font-normal primary_text_color -mt-12 group-hover:-mt-[72px] transition-all duration-500 flex items-center justify-start gap-2">
             <span>{t("viewMore")}</span>
             <span className={` ${isRTL ? "rotate-180" : "rotate-0"}`}>
-              <FaArrowRightLong size={16} />
+              <IoArrowForwardCircleOutline size={20} />
             </span>
           </button>
         </div>

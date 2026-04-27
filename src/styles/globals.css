@@ -8,6 +8,7 @@
   --secondary-color: #01060E;
   --light-bg-color: #0E49A012;
   --text-color: #01060E;
+  --iconshover-bg-color: #40E0D0;
 }
 
 /* Dark Theme */
@@ -16,6 +17,7 @@
   --secondary-color: #01060E;
   --light-bg-color: rgba(1, 6, 14, 0.12);
   --text-color: #ffffff;
+  --iconshover-bg-color: #40E0D0;
 }
 
 body[data-scroll-locked] {

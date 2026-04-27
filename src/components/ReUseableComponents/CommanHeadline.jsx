@@ -10,10 +10,10 @@ const CommanHeadline = ({ headline, subHeadline, link, image }) => {
 
   return (
     <div className="flex items-center md:items-end justify-between w-full pb-[32px]">
-      <div className="flex items-start justify-start gap-2 px-[3px] py-[5px]">
+      <div className="flex items-start justify-start gap-2 px-[3px] py-[5px] ">
         {hasImage && (
           <div
-            className={`h-auto aspect-square w-[60px] rounded-[3px] bg-[#0E49A0] flex items-center justify-center p-2`}
+            className={`h-auto aspect-square w-[60px] rounded-[3px] bg-[#0E49A0]  duration-300 flex items-center justify-center p-2`}
             // style={{ backgroundColor: imageBgColor }}
           >
             <CustomImageTag
@@ -25,7 +25,7 @@ const CommanHeadline = ({ headline, subHeadline, link, image }) => {
           </div>
         )}
         <div className="flex flex-col gap-1">
-          <span className="text-base md:text-3xl font-semibold">
+          <span className="text-base md:text-3xl font-semibold ">
             {headline}
           </span>
           <span className="primary_text_color text-sm md:text-base font-normal">
