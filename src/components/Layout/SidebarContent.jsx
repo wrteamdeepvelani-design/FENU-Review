@@ -65,11 +65,11 @@ const SidebarContent = memo(
       <div className="flex flex-col h-full">
         {/* Logo and Close Button */}
         <div className="flex items-center justify-between p-4 border-b">
-          <div className="w-60 h-24">
+          <div className=" flex items-center">
             <CustomImageTag
               src={websettings?.web_logo || "/logo.png"}
               alt={t("logo")}
-              className="w-full aspect-logo object-contain"
+              className="h-[40px] md:h-[40px] xl:h-[50px] aspect-logo "
             />
           </div>
           <SheetClose asChild>
