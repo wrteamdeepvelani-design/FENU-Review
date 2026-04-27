@@ -4,10 +4,12 @@ import { ArrowRight } from "lucide-react";
 import { useRTL } from "@/utils/Helper";
 import CustomImageTag from "../ReUseableComponents/CustomImageTag";
 import { useTranslation } from "../Layout/TranslationContext";
+import { useSelector } from "react-redux";
 
 const BlurredServiceCard = ({ elem, handleRouteChange }) => {
   const t = useTranslation();
   const isRTL = useRTL();
+  const currency = useSelector((state) => state.settingsData?.settings?.general_settings?.currency || state.settingsData?.settings?.app_settings?.currency || "");
 
   const translatedName = elem?.translated_name ? elem?.translated_name : elem?.name;
   
@@ -40,7 +42,8 @@ const BlurredServiceCard = ({ elem, handleRouteChange }) => {
       {elem?.total_providers !== undefined && (
           <div className="flex items-center justify-between mt-1">
             <span className="text-sm">
-              {elem?.total_providers} {elem?.total_providers === 1 ? t("provider") : t("providers")}
+              {/* {elem?.total_providers} {elem?.total_providers === 1 ? t("provider") : t("providers")} */}
+              <span className="">{t("starting_from")} {elem?.lowest_price} {currency}</span>
             </span>
             <ArrowRight
               className={`opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${

@@ -787,5 +787,6 @@
   "changePasswordDescription": "Update your password to keep your account secure.",
   "setPasswordDescription": "Please set a password to complete your login.",
   "noCategoriesAvailable": "No Categories Available",
-  "max5Images":"Max 5 images"
-} 
+  "max5Images": "Max 5 images",
+  "starting_from": "Starting From"
+}
