@@ -19,6 +19,7 @@ import { allServices, bookmark, getProviders } from "@/api/apiRoutes";
 import Lightbox from "../ReUseableComponents/CustomLightBox/LightBox";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { toast } from "sonner";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
 import {
   getChatData,
   selectActiveTab,
@@ -134,7 +135,7 @@ const ProviderDetails = () => {
             locationData?.lat,
             locationData?.lng,
             slug,
-          ])
+          ]),
         );
       } else {
         toast.error(data?.message);
@@ -179,7 +180,7 @@ const ProviderDetails = () => {
 
   const aggregatedServices = useMemo(
     () => servicesData?.pages?.flatMap((page) => page.data) || [],
-    [servicesData?.pages]
+    [servicesData?.pages],
   );
 
   const totalServices = servicesData?.pages?.[0]?.total || 0;
@@ -218,7 +219,7 @@ const ProviderDetails = () => {
         setProviderServicesLoad({
           slug,
           loadedCount: aggregatedServices.length,
-        })
+        }),
       );
     }
   }, [
@@ -265,7 +266,7 @@ const ProviderDetails = () => {
           image: providerData?.image,
           order_status: "",
           is_pre_booking: true,
-        })
+        }),
       );
       router.push("/chats");
     } catch (error) {
@@ -291,7 +292,7 @@ const ProviderDetails = () => {
   useEffect(() => {
     if (providerAboutRef.current) {
       const lineHeight = parseFloat(
-        getComputedStyle(providerAboutRef.current).lineHeight
+        getComputedStyle(providerAboutRef.current).lineHeight,
       );
       const maxLinesHeight = lineHeight * 4;
       setIsOverflowing(providerAboutRef.current.scrollHeight > maxLinesHeight);
@@ -346,20 +347,49 @@ const ProviderDetails = () => {
                     />
                   </div>
                   <div className="p-5">
-                    <div className="flex flex-col sm:flex-row items-start gap-3">
+                    <div className="flex flex-col items-start gap-3">
                       <div className="w-14 h-14 rounded-xl overflow-hidden border border-gray-100">
                         <CustomImageTag
                           src={providerData?.image}
                           alt={providerData?.company_name}
                           className="w-full aspect-square object-cover"
-
                         />
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                          {providerData?.translated_company_name ||
-                            providerData?.company_name}
-                        </h3>
+                      <div className="flex-1 flex-wrap">
+                        <div className=" flex flex-col md:flex-row md:items-center gap-1 flex-wrap">
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                            {providerData?.translated_company_name ||
+                              providerData?.company_name}
+                          </h3>
+                          <div className="flex items-center gap-1">
+                            {providerData?.is_verified === "1" && (
+                              <span className="text-xl primary_text_color">
+                                <RiVerifiedBadgeFill size={20} />{" "}
+                              </span>
+                            )}
+                            {providerData?.is_ensured === "1" && (
+                              <div className="z-20 left-[0px] top-[-20px] flex items-center gap-1 ">
+                                <svg
+                                  width="50"
+                                  height="50"
+                                  viewBox="0 0 50 50"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="h-[15px] w-[15px] "
+                                >
+                                  <path
+                                    d="M50 4.99901V44.9911C50 46.3169 49.4733 47.5885 48.5358 48.526C47.5982 49.4635 46.3266 49.9901 45.0008 49.9901H28.0034C27.2079 49.9901 26.4449 49.6741 25.8824 49.1116C25.3199 48.5491 25.0039 47.7862 25.0039 46.9907C25.0039 46.1952 25.3199 45.4323 25.8824 44.8698C26.4449 44.3073 27.2079 43.9913 28.0034 43.9913H44.0009V5.99882H6.00678V27.9945C6.00678 28.79 5.69076 29.5529 5.12823 30.1154C4.56571 30.6779 3.80277 30.9939 3.00724 30.9939C2.21171 30.9939 1.44877 30.6779 0.886247 30.1154C0.323725 29.5529 0.00770259 28.79 0.00770259 27.9945V4.99901C0.00770259 3.67319 0.534406 2.40167 1.47194 1.46418C2.40948 0.52668 3.68105 0 5.00693 0H45.0008C46.3266 0 47.5982 0.52668 48.5358 1.46418C49.4733 2.40167 50 3.67319 50 4.99901ZM25.1263 30.8714C24.8477 30.5918 24.5165 30.3699 24.1519 30.2185C23.7873 30.0671 23.3964 29.9892 23.0017 29.9892C22.6069 29.9892 22.216 30.0671 21.8514 30.2185C21.4868 30.3699 21.1557 30.5918 20.877 30.8714L9.00632 42.7416L5.12941 38.8698C4.8504 38.5908 4.51916 38.3695 4.15461 38.2185C3.79005 38.0675 3.39933 37.9898 3.00474 37.9898C2.61015 37.9898 2.21943 38.0675 1.85488 38.2185C1.49032 38.3695 1.15908 38.5908 0.880068 38.8698C0.601052 39.1488 0.379725 39.4801 0.228722 39.8446C0.0777198 40.2091 -5.87982e-09 40.5998 0 40.9944C5.87982e-09 41.389 0.0777198 41.7797 0.228722 42.1442C0.379725 42.5088 0.601052 42.84 0.880068 43.119L6.87914 49.1178C7.15781 49.3974 7.48894 49.6193 7.85354 49.7707C8.21814 49.9221 8.60904 50 9.00382 50C9.3986 50 9.78949 49.9221 10.1541 49.7707C10.5187 49.6193 10.8498 49.3974 11.1285 49.1178L25.1263 35.1206C25.406 34.8419 25.6278 34.5108 25.7792 34.1462C25.9306 33.7816 26.0086 33.3908 26.0086 32.996C26.0086 32.6012 25.9306 32.2103 25.7792 31.8458C25.6278 31.4812 25.406 31.1501 25.1263 30.8714Z"
+                                    fill="#0EA02E"
+                                  />
+                                </svg>
+                                <span className=" font-semibold text-[#0EA02E] flex justify-center items-center">
+                                  {t("Insured")}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
                         <div className="flex items-center gap-3 mt-1">
                           {providerData?.ratings > 0 && (
                             <div
@@ -398,8 +428,9 @@ const ProviderDetails = () => {
                     <div className="mt-4 space-y-4">
                       <p
                         ref={providerAboutRef}
-                        className={`text-sm description_color leading-relaxed ${!isExpanded ? "line-clamp-4" : ""
-                          } transition-all duration-300`}
+                        className={`text-sm description_color leading-relaxed ${
+                          !isExpanded ? "line-clamp-4" : ""
+                        } transition-all duration-300`}
                       >
                         {providerData?.translated_about || providerData?.about}
                       </p>
@@ -414,10 +445,11 @@ const ProviderDetails = () => {
                     </div>
                     <div className="flex items-center gap-3 mt-4">
                       <button
-                        className={`${providerData?.is_bookmarked === "1"
-                          ? "card_bg dark:light_bg_color primary_text_color"
-                          : "card_bg dark:light_bg_color"
-                          } p-2 rounded-sm`}
+                        className={`${
+                          providerData?.is_bookmarked === "1"
+                            ? "card_bg dark:light_bg_color primary_text_color"
+                            : "card_bg dark:light_bg_color"
+                        } p-2 rounded-sm`}
                         onClick={handleBookmark}
                         disabled={bookmarkMutation.isPending}
                       >
@@ -463,7 +495,6 @@ const ProviderDetails = () => {
                                 src={image}
                                 alt={`other_image_${index}`}
                                 imgClassName="rounded-md w-full aspect-service-other object-cover"
-
                               />
                             </div>
                           ))}
@@ -522,40 +553,44 @@ const ProviderDetails = () => {
 
                 <TabsTrigger
                   value="services"
-                  className={`${activeTab === "services"
-                    ? "primary_bg_color !text-white"
-                    : "bg-white text-black"
-                    } px-6 md:px-4 py-2 rounded-md font-medium w-full text-center`}
+                  className={`${
+                    activeTab === "services"
+                      ? "primary_bg_color !text-white"
+                      : "bg-white text-black"
+                  } px-6 md:px-4 py-2 rounded-md font-medium w-full text-center`}
                   onClick={() => handleTabChange("services")}
                 >
                   {t("services")}
                 </TabsTrigger>
                 <TabsTrigger
                   value="about"
-                  className={`${activeTab === "about"
-                    ? "primary_bg_color !text-white"
-                    : "bg-white text-black"
-                    } px-6 md:px-4 py-2 rounded-md font-medium w-full text-center`}
+                  className={`${
+                    activeTab === "about"
+                      ? "primary_bg_color !text-white"
+                      : "bg-white text-black"
+                  } px-6 md:px-4 py-2 rounded-md font-medium w-full text-center`}
                   onClick={() => handleTabChange("about")}
                 >
                   {t("about")}
                 </TabsTrigger>
                 <TabsTrigger
                   value="reviews"
-                  className={`${activeTab === "reviews"
-                    ? "primary_bg_color !text-white"
-                    : "bg-white text-black"
-                    } px-6 md:px-4 py-2 rounded-md font-medium w-full text-center`}
+                  className={`${
+                    activeTab === "reviews"
+                      ? "primary_bg_color !text-white"
+                      : "bg-white text-black"
+                  } px-6 md:px-4 py-2 rounded-md font-medium w-full text-center`}
                   onClick={() => handleTabChange("reviews")}
                 >
                   {t("reviews")}
                 </TabsTrigger>
                 <TabsTrigger
                   value="offers"
-                  className={`${activeTab === "offers"
-                    ? "primary_bg_color !text-white"
-                    : "bg-white text-black"
-                    } px-6 md:px-4 py-2 rounded-md font-medium w-full text-center`}
+                  className={`${
+                    activeTab === "offers"
+                      ? "primary_bg_color !text-white"
+                      : "bg-white text-black"
+                  } px-6 md:px-4 py-2 rounded-md font-medium w-full text-center`}
                   onClick={() => handleTabChange("offers")}
                 >
                   {t("offers")}
