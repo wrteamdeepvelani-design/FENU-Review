@@ -53,8 +53,8 @@ const BlurredServiceCard = ({ elem, handleRouteChange }) => {
           <div className="relative mt-1 h-5 overflow-hidden">
             {/* Default Text */}
             <span
-              className="absolute inset-0 flex items-center text-sm 
-    transition-all duration-300 
+              className="absolute inset-0 flex items-center text-[9px] md:text-[10px] lg:text-sm 
+    transition-all duration-300 whitespace-nowrap
     group-hover:-translate-y-full group-hover:opacity-0"
             >
               {t("starting_from")} {elem?.lowest_price} {currency}

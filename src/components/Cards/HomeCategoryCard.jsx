@@ -22,19 +22,18 @@ const HomeCategoryCard = ({ data, handleRouteCategory }) => {
     : data?.name;
   return (
     <div
-      className={`relative border border-transparent custom-shadow card_bg px-[18px] py-[24px] rounded-[16px] flex ${pathName === "/" ? "" : "flex-col"} md:flex-row items-center justify-start gap-4 group hover:border_color cursor-pointer`}
+      className={`relative border border-transparent custom-shadow card_bg px-[18px] py-[24px] rounded-[16px] flex ${pathName === "/" ? "" : "flex-col"} md:flex-row items-center justify-start gap-4 group  cursor-pointer`}
       onClick={() => handleRouteCategory(data)}
     >
       {/* Icon/Image Container */}
       <div
-        className={`h-auto aspect-square w-[55px] rounded-[3px] bg-[#0E49A0] flex items-center justify-center p-2`}
-        // style={{ backgroundColor: imageBgColor }}
+        className={`w-[55px] h-[55px] flex-shrink-0 rounded-[3px] bg-[#0E49A0] group-hover:bg-[#40E0D0] transition-colors duration-300 flex items-center justify-center p-2`}
       >
         <CustomImageTag
           src={data?.category_image}
           alt={translatedName}
           className="w-full h-full"
-          imgClassName=""
+          imgClassName="transition-all duration-300 group-hover:[filter:brightness(0)_saturate(100%)_invert(40%)_sepia(68%)_saturate(500%)_hue-rotate(148deg)_brightness(80%)]"
         />
       </div>
 

@@ -13,7 +13,7 @@ const CommanHeadline = ({ headline, subHeadline, link, image }) => {
       <div className="flex items-start justify-start gap-2 px-[3px] py-[5px] ">
         {hasImage && (
           <div
-            className={`h-auto aspect-square w-[60px] rounded-[3px] bg-[#0E49A0]  duration-300 flex items-center justify-center p-2`}
+            className={`w-[50px] h-[50px] md:w-[60px] md:h-[60px] flex-shrink-0 rounded-[3px] bg-[#0E49A0] duration-300 flex items-center justify-center p-2`}
             // style={{ backgroundColor: imageBgColor }}
           >
             <CustomImageTag
