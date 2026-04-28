@@ -356,7 +356,7 @@ const ProviderDetails = () => {
                         />
                       </div>
                       <div className="flex-1 flex-wrap">
-                        <div className=" flex flex-col md:flex-row md:items-center gap-1 flex-wrap">
+                        <div className=" flex flex-row md:items-center gap-1 flex-wrap">
                           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                             {providerData?.translated_company_name ||
                               providerData?.company_name}
