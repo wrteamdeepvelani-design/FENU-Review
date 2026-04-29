@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 import BlurredServiceCard from "../Cards/BlurredServiceCard";
+import BlurredServiceCardSkeleton from "../Skeletons/BlurredServiceCardSkeleton";
 import { addCategory } from "@/redux/reducers/multiCategoriesSlice";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
@@ -15,7 +16,7 @@ import { HOME_EVENTS } from "@/constants/clarityEventNames";
 
 import SectionBg from "../../assets/sectionbgsvg.svg";
 
-const HomeCommanSection = ({ data }) => {
+const HomeCommanSection = ({ data, isLoading = false }) => {
   const router = useRouter();
   const pathname = usePathname();
   const dispatch = useDispatch();
@@ -87,14 +88,20 @@ const HomeCommanSection = ({ data }) => {
             }}
             className="mySwiper"
           >
-            {data?.sub_categories.map((service) => (
-              <SwiperSlide key={service.id}>
-                <BlurredServiceCard
-                  elem={service}
-                  handleRouteChange={handleRouteCategory}
-                />
-              </SwiperSlide>
-            ))}
+            {isLoading || !data?.sub_categories?.length
+              ? Array.from({ length: 5 }).map((_, i) => (
+                  <SwiperSlide key={`skeleton-${i}`}>
+                    <BlurredServiceCardSkeleton />
+                  </SwiperSlide>
+                ))
+              : data.sub_categories.map((service) => (
+                  <SwiperSlide key={service.id}>
+                    <BlurredServiceCard
+                      elem={service}
+                      handleRouteChange={handleRouteCategory}
+                    />
+                  </SwiperSlide>
+                ))}
           </Swiper>
         </div>
       </div>

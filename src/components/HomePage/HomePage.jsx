@@ -117,7 +117,7 @@ const HomePage = () => {
         if (!section?.sub_categories?.length) return null;
         return (
           <div key={`${section.section_type}-${index}`}>
-            <HomeCommanSection data={section} />
+            <HomeCommanSection data={section} isLoading={isLoading} />
             <HomeDivider />
           </div>
         );
