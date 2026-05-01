@@ -34,7 +34,13 @@ const HomeCategoryCard = ({ data, handleRouteCategory }) => {
           alt={translatedName}
           className="w-full h-full"
           imgClassName="transition-all duration-300 group-hover:[filter:brightness(0)_saturate(100%)_invert(40%)_sepia(68%)_saturate(500%)_hue-rotate(148deg)_brightness(80%)]"
+          loadingBuilder={() => (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+            </div>
+          )}
         />
+        
       </div>
 
       {/* Content Section */}
