@@ -40,7 +40,7 @@ const HomeCategoryCard = ({ data, handleRouteCategory }) => {
             </div>
           )}
         />
-        
+
       </div>
 
       {/* Content Section */}
@@ -54,8 +54,9 @@ const HomeCategoryCard = ({ data, handleRouteCategory }) => {
           {" "}
           {/* Set a fixed height to avoid layout shift */}
           <span className="text-base font-bold primary_text_color dark:text-white group-hover:mt-12 transition-all duration-500">
-            {data?.total_providers}{" "}
-            {data?.total_providers === 1 ? t("provider") : t("providers")}
+            {data?.total_providers > 0
+              ? `${data.total_providers} ${data.total_providers === 1 ? t("provider") : t("providers")}`
+              : t("coming_soon") || "Coming Soon"}
           </span>
           {/* View More with Animation */}
           <button className="text-sm md:text-base font-normal primary_text_color -mt-12 group-hover:-mt-[72px] transition-all duration-500 flex items-center justify-start gap-2">

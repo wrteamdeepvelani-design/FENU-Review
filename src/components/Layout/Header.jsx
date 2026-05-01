@@ -9,7 +9,7 @@ import {
   Suspense,
   useRef,
 } from "react";
-import { FaBars, FaShoppingCart } from "react-icons/fa";
+import { FaBars, FaShoppingCart, FaTimes } from "react-icons/fa";
 import { IoLocationSharp } from "react-icons/io5";
 import { logoutApi, getLanguageJsonDataApi } from "@/api/apiRoutes";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -655,23 +655,12 @@ const Header = () => {
                   </div>
                 </CustomLink>
               )}
-
+  
               <button
-                className="relative w-6 h-5 flex flex-col justify-between md:hidden"
+                className="description_color dark:text-white md:hidden"
                 onClick={() => handleMobileNav()}
               >
-                <span
-                  className={`block h-[2px] w-6 bg-black dark:bg-white rounded transition-transform duration-300 ${isDrawerOpen ? "rotate-45 translate-y-[8px]" : ""
-                    }`}
-                ></span>
-                <span
-                  className={`block h-[2px] w-6 bg-black dark:bg-white rounded transition-opacity duration-300 ${isDrawerOpen ? "opacity-0" : "opacity-100"
-                    }`}
-                ></span>
-                <span
-                  className={`block h-[2px] w-6 bg-black dark:bg-white rounded transition-transform duration-300 ${isDrawerOpen ? "-rotate-45 -translate-y-2.5" : ""
-                    }`}
-                ></span>
+                {isDrawerOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
               </button>
             </div>
 

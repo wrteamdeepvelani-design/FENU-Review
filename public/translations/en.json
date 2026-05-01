@@ -788,5 +788,6 @@
   "setPasswordDescription": "Please set a password to complete your login.",
   "noCategoriesAvailable": "No Categories Available",
   "max5Images": "Max 5 images",
-  "starting_from": "Starting From"
+  "starting_from": "Starting From",
+  "coming_soon": "Coming Soon"
 }
