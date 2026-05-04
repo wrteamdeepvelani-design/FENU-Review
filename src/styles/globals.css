@@ -1347,6 +1347,11 @@ textarea.input-like.expanded {
 .aspect-feature-banner {
   aspect-ratio: 1320/400;
 }
+@media (max-width: 767px) {
+  .aspect-feature-banner {
+    aspect-ratio: 4 / 2;
+  }
+}
 
 .aspect-blog-related {
   aspect-ratio: 8/5;
